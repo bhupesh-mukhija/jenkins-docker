@@ -1,0 +1,22 @@
+version: "3.4"
+services:
+        jenkins-master:
+                image: myjenkins/myjenkins
+                user: root
+                volumes: 
+                        - ./data/jenkins_home:/var/jenkins_home
+                        - ./master/configs:/etc/configs/auth
+                        - /var/run/docker.sock:/var/run/docker.sock
+                ports:
+                       - "5000:8080"
+        #jenkins-nginx:
+                #image: nginx:latest
+                #ports:
+                        #- "80:80"
+                        #- "443:443"
+                #volumes:
+                        #- ./nginx/default.conf:/etc/nginx/default.conf
+                        #- ./nginx/conf.d:/etc/nginx/conf.d
+                        #- ./nginx/logs:/var/log/nginx
+                        #- ./nginx/ssl:/etc/nginx/ssl
+                        #- ./nginx/htpass:/etc/nginx/htpass
